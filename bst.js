@@ -25,10 +25,20 @@ class Tree {
 
     return root;
   }
+
+  insert(root = this.root, value) {
+    if (root === null) {
+      return new Node(value);
+    } else if (root.data === value) {
+      return root;
+    } else {
+      if (root.data > value) {
+        root.left = this.insert(root.left, value);
+      } else {
+        root.right = this.insert(root.right, value);
+      }
+    }
+
+    return root;
+  }
 }
-
-const arr = [4, 3, 1, 2];
-
-const tree = new Tree(arr);
-
-console.log(tree.buildTree(arr));
